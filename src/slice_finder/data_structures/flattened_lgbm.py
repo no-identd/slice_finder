@@ -63,9 +63,9 @@ class FlattenedLGBMDataStructure(LGBMDataStructure):
         self.set_flattened_rules_tree()
 
     def get_filter(self):
-        feature = random.choice(list(self.flattened_rules_tree.keys()))
+        feature = random.choice(sorted(list(self.flattened_rules_tree.keys())))
         tree_value = self.flattened_rules_tree[feature]
-        value = random.choice(list(tree_value.thresholds))
+        value = random.choice(sorted(list(tree_value.thresholds)))
 
         if tree_value.type == "continuous":
             operator = random.choice(["<=", ">"])
