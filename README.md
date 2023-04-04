@@ -8,7 +8,7 @@ Slice Finder is a crucial investigative instrument, as it enables data scientist
 * Tackling data quantization can be complex, particularly when transforming continuous values into discrete space. Slice Finder overcomes this challenge by fitting an LGBM model to the data and extracting the appropriate splits.
 * As the number of filters, columns, and values increases, so does the combinatorial search space. Slice Finder addresses this issue in two ways:
     * By fitting an LGBM model to the data, the most critical fields and values for splitting are identified, significantly reducing the search space.
-    * Incorporating Genetic Algorithm heuristics to converge towards global minima/maxima, which outperforms both the time-consuming "try-it-all" approach and filter-uniform sampling in terms of efficiency and results.
+    * Incorporating Genetic Algorithm heuristics to converge towards global minima/maxima, which outperforms both the time-consuming "try-it-all" approach and uniform filter sampling in terms of efficiency and results.
 
 ## Engineering achievements
 By separating data connectors, data structures, and slice finders, SliceFinder offers a flexible framework that enables seamless modifications and replacement of components. Furthermore, by detaching metric mechanism from the system, SliceFinder supports any custom logic metrics.
