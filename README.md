@@ -87,6 +87,10 @@ You can create your custom data structure by extending the base class and implem
 ## Metrics
 Metrics are passed as functions to the `find_extreme` method, allowing you to use any metric or implement your custom logic.
 
+## Neat things to implement
+* Calculation parallelism
+* More search algorithms. Ant colony optimization?
+
 ## License
 This project is licensed under the MIT License.
 
