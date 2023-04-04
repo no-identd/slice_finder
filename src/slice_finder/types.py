@@ -15,9 +15,9 @@ class Filter:
 class Extreme:
     """Extreme object."""
 
-    data_metric: float
+    data_metric_value: float
     filtered_data: Any
-    filtered_data_metric: float
+    filtered_data_metric_value: float
     filters: list[Filter]
 
     def get_prettified_view(self) -> str:
@@ -26,8 +26,8 @@ class Extreme:
                 Returns:
                     Prettified text."""
 
-        return f"""Value of the metric on the whole dataset: {self.data_metric}
-Value of the metric on the filtered data: {self.filtered_data_metric}
+        return f"""Value of the metric on the whole dataset: {self.data_metric_value}
+Value of the metric on the filtered data: {self.filtered_data_metric_value}
 Filters: {self.filters}"""
 
     def __str__(self) -> str:

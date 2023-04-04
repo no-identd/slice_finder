@@ -198,8 +198,8 @@ class GASliceFinder(SliceFinder):
         )
 
         return [Extreme(
-            data_metric=metric(self.data_connector.data),
+            data_metric_value=metric(self.data_connector.data),
             filtered_data=self.data_connector.filter(best_filters),
-            filtered_data_metric=best_filters.fitness.values,
+            filtered_data_metric_value=best_filters.fitness.values[0],
             filters=best_filters,
         ) for best_filters in hof]
