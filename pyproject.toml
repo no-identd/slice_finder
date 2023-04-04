@@ -4,6 +4,17 @@ version = "0.0.1"
 description = "A Framework for Slice Discovery"
 authors = ["Igal Leikin <igaloly@gmail.com>"]
 keywords = ["slice discovery", "slice finding"]
+readme = "README.md"
+url = "https://github.com/igaloly/slice_finder"
+license = "MIT"
+
+[tool.poetry.metadata]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10"
