@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "slice_finder"
-version = "0.0.2"
+version = "0.0.21"
 description = "A Framework for Slice Discovery"
 authors = ["Igal Leikin <igaloly@gmail.com>"]
 keywords = ["slice discovery", "slice finding"]
