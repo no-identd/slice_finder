@@ -23,7 +23,7 @@ from sklearn import metrics
 from slice_finder import GASliceFinder, FlattenedLGBMDataStructure, PandasDataConnector
 
 # Load data
-df = pd.read_csv('you_data.csv')
+df = pd.read_csv('your_data.csv')
 
 # Initialize Genetic Algorithm Slice Finder with desired data connector and data structure
 slice_finder = GASliceFinder(
