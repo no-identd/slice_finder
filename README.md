@@ -1,14 +1,20 @@
 # Slice Finder: A Framework for Slice Discovery
 
-Slice Finder is a versatile and highly configurable framework designed for the discovery of informative, anomalous data subsets in Python, which exhibit substantially divergent metric values in comparison to the entire dataset.
+Slice Finder is a versatile and highly configurable framework designed for the discovery of explainable, anomalous data subsets, which exhibit substantially divergent metric values in comparison to the entire dataset.
 
 Slice Finder is a crucial investigative instrument, as it enables data scientists to identify regions where their models demonstrate over- or under-performance.
 
-## Key Characteristics
-* Supports any data connector (Pandas, Polars, etc.)
-* Compatible with any data structure (trees, lists, etc.)
-* Allows the use of any metric (custom or from popular libraries)
-* Implements multiple algorithms for slice discovery (genetic algorithms, uniform sampling, etc.)
+## Algorithmic achievements
+* Tackling data quantization can be complex, particularly when transforming continuous values into discrete space. Slice Finder overcomes this challenge by fitting an LGBM model to the data and extracting the appropriate splits.
+* As the number of filters, columns, and values increases, so does the combinatorial search space. Slice Finder addresses this issue in two ways:
+    * By fitting an LGBM model to the data, the most critical fields and values for splitting are identified, significantly reducing the search space.
+    * Incorporating Genetic Algorithm heuristics to converge towards global minima/maxima, which outperforms both the time-consuming "try-it-all" approach and filter-uniform sampling in terms of efficiency and results.
+
+## Engineering achievements
+By separating data connectors, data structures, and slice finders, SliceFinder offers a flexible framework that enables seamless modifications and replacement of components. Furthermore, by detaching metric mechanism from the system, SliceFinder supports any custom logic metrics.
+
+## Demo
+![GA search for anomalous subset with high MSE](./examples/demo.gif)
 
 ## Installation
 Install Slice Finder via pip:
@@ -59,10 +65,9 @@ More connectors will be added as demand grows.
 You can create your custom data connector by extending the base class and implementing the necessary methods.
 
 ## Data Structures
-Data quantization is challenging, and converting continuous values into discrete space is a non-trivial task. 
-
 Built in:
-* `FlattenedLGBMDataStructure` - Utilizes LightGBM decision trees to quantize and partition the data
+* `FlattenedLGBMDataStructure` - Utilizes LightGBM decision trees to quantize and partition the data.
+Note: Currently, `FlattenedLGBMDataStructure` must work with `PandasDataConnector` because of LGBM constraints. Moreover, this data structure is coupled to pandas connector because categorical values must be modified to `pd.Categorical` class.
 
 Base classes:
 * `DataStructure` - Base data structure
