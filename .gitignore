@@ -1,0 +1,5 @@
+datasets/fraud_2_processed.csv
+__pycache__
+datasets
+.venv
+.mypy_cache
