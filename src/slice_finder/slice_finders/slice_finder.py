@@ -1,4 +1,5 @@
 import random
+import numpy as np
 
 from slice_finder.data_connectors.data_connector import DataConnector
 from slice_finder.data_structures.data_structure import DataStructure
@@ -15,6 +16,7 @@ class SliceFinder:
         random_state: int | None = None,
     ):
         random.seed(random_state)
+        np.random.seed(random_state)
 
         self.verbose = verbose
 
