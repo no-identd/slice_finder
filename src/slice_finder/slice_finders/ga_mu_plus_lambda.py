@@ -95,6 +95,12 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
         min_size: float,
         indpb: float,
     ):
+        try:
+            del creator.FitnessMulti
+            del creator.Individual
+        except Exception:
+            pass
+
         creator.create("FitnessMulti", base.Fitness, weights=(1.0,) if maximize else (-1.0,))
         creator.create("Individual", list, fitness=creator.FitnessMulti)
 
