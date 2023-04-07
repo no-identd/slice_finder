@@ -14,7 +14,7 @@ class DataConnector:
         raise NotImplementedError()
 
     @abstractmethod
-    def filter(self, filters: list[Filter]):
+    def filter(self, data, filters: list[Filter]):
         """Custom login to filter the data."""
         raise NotImplementedError()
 

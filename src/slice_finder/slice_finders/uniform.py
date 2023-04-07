@@ -44,7 +44,10 @@ class UniformSliceFinder(SliceFinder):
 
         for _ in range(n_iters):
             filters = self.data_structure.get_n_filters(n_filters)
-            filtered_data = self.data_connector.filter(filters)
+            filtered_data = self.data_connector.filter(
+                self.data_connector,
+                filters
+            )
             is_passing_size_threshold = (
                 len(filtered_data) >= len(self.data_connector.data) * min_size
             )
