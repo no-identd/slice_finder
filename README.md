@@ -79,11 +79,12 @@ You can create your custom data structure by extending the base classes and impl
 
 ## Slice Finders
 Built in:
-* `GASliceFinder` - Utilizes `eaMuPlusLambda` evolutionary algorithm to search for the most anomalous slice
+* `GAMuPlusLambdaSliceFinder` - Utilizes `eaMuPlusLambda` evolutionary algorithm to search for the most anomalous slice
 * `UniformSliceFinder` - Utilizes uniform sampling out of the data structure
 
 Base classes:
 * `SliceFinder` - Base slice finder
+* `GASliceFinder` - Extends `SliceFinder` and enables the use of genetic algorithms as search heuristics
 
 More algorithms will be added based on demand. 
 
