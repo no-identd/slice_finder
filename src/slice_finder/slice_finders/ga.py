@@ -9,7 +9,7 @@ from slice_finder.types import Filter
 class GASliceFinder(SliceFinder):
     """Slice discovery using Genetic algorithm."""
 
-    def create_individual(self, n_filters: int):
+    def create_individual(self, n_filters: int | tuple[int, int]):
         return creator.Individual(self.data_structure.get_n_filters(n_filters))
 
     def mutate_individual(self, individual: list[Filter], indpb: float):

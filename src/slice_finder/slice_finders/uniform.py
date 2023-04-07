@@ -11,7 +11,7 @@ class UniformSliceFinder(SliceFinder):
         self,
         metric: Callable[[Any], float],
         n_iters=300,
-        n_filters=3,
+        n_filters: int | tuple[int, int] = 3,
         min_size=0.01,
         n_hof=1,
         maximize=False,
@@ -24,7 +24,8 @@ class UniformSliceFinder(SliceFinder):
             metric: Function that calculates metric value over data
             n_hof: Number of extreme values to return
             n_iters: Number of iterations
-            n_filters: Number of filters
+            n_filters: Number of filters. If a tuple, that means n_filters
+            will be in the range [n_filters[0], n_filters[1]]
             maximize: `True` will search for the maximum
             metric's value, and `False` will search for the minumum one
             min_size: Minimum size, in fractions, of the extreme subset.

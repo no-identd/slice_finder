@@ -90,7 +90,7 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
     def create_toolbox(
         self,
         maximize: bool,
-        n_filters: int,
+        n_filters: int | tuple[int, int],
         metric: Callable[[Any], float],
         min_size: float,
         indpb: float,
@@ -119,7 +119,7 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
         n_hof=1,
         n_generations=10,
         population_size=100,
-        n_filters=3,
+        n_filters: int | tuple[int, int] = 3,
         maximize=False,
         min_size=0.01,
         cxpb=0.5,
@@ -135,7 +135,8 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
             n_hof: Number of extreme values to return
             n_generations: Number of iterations
             population_size: Population size
-            n_filters: Number of filters
+            n_filters: Number of filters. If a tuple, that means n_filters
+            will be in the range [n_filters[0], n_filters[1]]
             maximize: `True` will search for the maximum
             metric's value, and `False` will search for the minumum one
             min_size: Minimum size, in fractions, of the extreme subset.
@@ -148,7 +149,8 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
             minimum: If `not maximize`, and `minimum` is reached, the search stoppes
         """
 
-        if n_filters <= 1:
+        if (isinstance(n_filters, int) and n_filters <= 1) or \
+            (isinstance(n_filters, tuple) and n_filters[0] <= 1):
             raise ValueError("n_filters must be larger than 1.")
 
         toolbox = self.create_toolbox(
