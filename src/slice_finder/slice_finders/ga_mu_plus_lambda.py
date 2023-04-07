@@ -1,4 +1,3 @@
-import random
 from typing import Any, Callable
 
 from deap import base, creator, tools

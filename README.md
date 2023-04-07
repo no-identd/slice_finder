@@ -2,6 +2,8 @@
 
 Slice Finder is a versatile and highly configurable framework designed for the discovery of explainable, anomalous data subsets, which exhibit substantially divergent metric values in comparison to the entire dataset.
 
+> To illustrate, imagine that you have developed a model for identifying fraudulent transactions. The model's overall accuracy across the entire dataset is 0.95. However, when transactions occur more than 100 km away from the previous transaction and involve cash (2 filters), the model's accuracy drops significantly to 0.54.
+
 Slice Finder is a crucial investigative instrument, as it enables data scientists to identify regions where their models demonstrate over- or under-performance.
 
 ## Algorithmic achievements
