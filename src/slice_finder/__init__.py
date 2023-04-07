@@ -4,5 +4,6 @@ from slice_finder.data_structures.data_structure import DataStructure
 from slice_finder.data_structures.flattened_lgbm import FlattenedLGBMDataStructure
 from slice_finder.data_structures.lgbm import LGBMDataStructure
 from slice_finder.slice_finders.ga import GASliceFinder
+from slice_finder.slice_finders.ga_mu_plus_lambda import GAMuPlusLambdaSliceFinder
 from slice_finder.slice_finders.slice_finder import SliceFinder
 from slice_finder.slice_finders.uniform import UniformSliceFinder
