@@ -20,18 +20,24 @@ class Extreme:
     filtered_data_metric_value: float
     filters: list[Filter]
 
-    def get_prettified_view(self) -> str:
-        """Replace the default behavior of `print`.
+    def get_human_readable(self) -> str:
+        """Returns a human readable format of the object.
 
-                Returns:
-                    Prettified text."""
+        Returns:
+            Human readable object.
+        """
 
-        return f"""Value of the metric on the whole dataset: {self.data_metric_value}
-Value of the metric on the filtered data: {self.filtered_data_metric_value}
-Filters: {self.filters}"""
+        textual_filters = [
+            f"{filter.feature} {filter.operator} {filter.value}" for filter in self.filters
+        ]
+        textual_composite_filter = "\nAND ".join(textual_filters)
+        return f"""When {textual_composite_filter},
+the value of the metric on the filtered data is {self.filtered_data_metric_value}
+compared to {self.data_metric_value} on the whole data.
+"""
 
     def __str__(self) -> str:
-         return self.get_prettified_view()
-    
+        return self.get_human_readable()
+
     def __repr__(self) -> str:
-         return self.get_prettified_view()
+        return self.get_human_readable()

@@ -2,6 +2,8 @@
 
 Slice Finder is a versatile and highly configurable framework designed for the discovery of explainable, anomalous data subsets, which exhibit substantially divergent metric values in comparison to the entire dataset.
 
+> To illustrate, imagine that you have developed a model for identifying fraudulent transactions. The model's overall accuracy across the entire dataset is 0.95. However, when transactions occur more than 100 km away from the previous transaction and involve cash (2 filters), the model's accuracy drops significantly to 0.54.
+
 Slice Finder is a crucial investigative instrument, as it enables data scientists to identify regions where their models demonstrate over- or under-performance.
 
 ## Algorithmic achievements
@@ -26,13 +28,13 @@ pip install slice_finder
 ```python
 import pandas as pd
 from sklearn import metrics
-from slice_finder import GASliceFinder, FlattenedLGBMDataStructure, PandasDataConnector
+from slice_finder import GAMuPlusLambdaSliceFinder, FlattenedLGBMDataStructure, PandasDataConnector
 
 # Load data
 df = pd.read_csv('your_data.csv')
 
 # Initialize Genetic Algorithm Slice Finder with desired data connector and data structure
-slice_finder = GASliceFinder(
+slice_finder = GAMuPlusLambdaSliceFinder(
     data_connector=PandasDataConnector(
         df=df,
         X_cols=df.drop(['pred', 'target'], axis=1).columns,
@@ -79,11 +81,12 @@ You can create your custom data structure by extending the base classes and impl
 
 ## Slice Finders
 Built in:
-* `GASliceFinder` - Utilizes `eaMuPlusLambda` evolutionary algorithm to search for the most anomalous slice
+* `GAMuPlusLambdaSliceFinder` - Utilizes `eaMuPlusLambda` evolutionary algorithm to search for the most anomalous slice
 * `UniformSliceFinder` - Utilizes uniform sampling out of the data structure
 
 Base classes:
 * `SliceFinder` - Base slice finder
+* `GASliceFinder` - Extends `SliceFinder` and enables the use of genetic algorithms as search heuristics
 
 More algorithms will be added based on demand. 
 

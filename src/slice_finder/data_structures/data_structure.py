@@ -1,5 +1,8 @@
-from slice_finder.data_connectors.data_connector import DataConnector
 from abc import abstractmethod
+import random
+
+from slice_finder.data_connectors.data_connector import DataConnector
+
 
 class DataStructure:
     @abstractmethod
@@ -19,7 +22,9 @@ class DataStructure:
 
         raise NotImplementedError()
 
-    def get_n_filters(self, n_filters: int):
+    def get_n_filters(self, n_filters: int | tuple[int, int]):
         """Get n filter objects."""
-        
+
+        if isinstance(n_filters, tuple):
+            n_filters = random.randint(n_filters[0], n_filters[1])
         return [self.get_filter() for _ in range(n_filters)]

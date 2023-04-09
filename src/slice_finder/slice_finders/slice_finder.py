@@ -1,10 +1,10 @@
+from abc import abstractmethod
 import random
+
 import numpy as np
 
 from slice_finder.data_connectors.data_connector import DataConnector
 from slice_finder.data_structures.data_structure import DataStructure
-
-from abc import abstractmethod
 
 
 class SliceFinder:
