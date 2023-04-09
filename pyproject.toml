@@ -3,7 +3,13 @@ name = "slice_finder"
 version = "0.0.21"
 description = "Slice Finder: A Framework for Slice Discovery"
 authors = ["Igal Leikin <igaloly@gmail.com>"]
-keywords = ["slice discovery", "subgroup discovery", "slice finding"]
+keywords = [
+  "slice discovery", 
+  "slice detection", 
+  "subgroup discovery", 
+  "subgroup detection", 
+  "slice finding"
+]
 readme = "README.md"
 homepage = "https://github.com/igaloly/slice_finder"
 repository = "https://github.com/igaloly/slice_finder"
