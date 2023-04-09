@@ -36,7 +36,7 @@ class LGBMDataStructure(DataStructure):
             max_unique_to_categorical: The number of maximum unique values
             for a column to be considered as categorical
         """
-         
+
         self.task = task
         self.tree: LGBMRegressor | LGBMClassifier | None = None
         self.tree_dict: dict[str, Any] | None = None

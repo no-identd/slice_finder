@@ -13,7 +13,7 @@ class PandasDataConnector(DataConnector):
         pred_col: str,
     ):
         """Data connector for using Pandas."""
-        
+
         self.df = df
         self.X_cols = X_cols
         self.y_col = y_col
@@ -40,9 +40,9 @@ class PandasDataConnector(DataConnector):
         else:
             raise ValueError(f"Invalid operator {filter.operator}")
 
-    def filter(self, filters: list[Filter]) -> pd.DataFrame:
+    def filter(self, data: pd.DataFrame, filters: list[Filter]) -> pd.DataFrame:
         """Filters the DF."""
-        df = self.df
+        df = data
         for filter in filters:
             df = df[self.apply_filter(df, filter)]
         return df
