@@ -1,5 +1,7 @@
 from abc import abstractmethod, abstractproperty
+
 from slice_finder.types import Filter
+
 
 class DataConnector:
     """Base DataConnector object."""

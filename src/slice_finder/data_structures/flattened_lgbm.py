@@ -30,7 +30,7 @@ class FlattenedLGBMDataStructure(LGBMDataStructure):
         max_unique_to_categorical=200,
     ):
         """Flattened representation of an LGBM tree.
-    
+
         Notes:
         Currenly works only as a base class for flattened LGBM.
 
@@ -41,7 +41,7 @@ class FlattenedLGBMDataStructure(LGBMDataStructure):
             max_unique_to_categorical: The number of maximum unique values
             for a column to be considered as categorical
         """
-        
+
         super().__init__(
             task=task,
             tree_kwargs=tree_kwargs,

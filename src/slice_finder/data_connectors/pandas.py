@@ -13,7 +13,7 @@ class PandasDataConnector(DataConnector):
         pred_col: str,
     ):
         """Data connector for using Pandas."""
-        
+
         self.df = df
         self.X_cols = X_cols
         self.y_col = y_col

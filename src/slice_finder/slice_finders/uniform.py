@@ -19,7 +19,7 @@ class UniformSliceFinder(SliceFinder):
         minimum=float("-inf"),
     ) -> list[Extreme]:
         """Find slice with an extreme value of a metric.
-        
+
         Args:
             metric: Function that calculates metric value over data
             n_hof: Number of extreme values to return
@@ -36,19 +36,18 @@ class UniformSliceFinder(SliceFinder):
         """
 
         data_metric_value = metric(self.data_connector.data)
-        hof = [Extreme(
-            data_metric_value=data_metric_value,
-            filtered_data=self.data_connector.data,
-            filtered_data_metric_value=float("-inf") if maximize else float("inf"),
-            filters=[],
-        )]
+        hof = [
+            Extreme(
+                data_metric_value=data_metric_value,
+                filtered_data=self.data_connector.data,
+                filtered_data_metric_value=float("-inf") if maximize else float("inf"),
+                filters=[],
+            )
+        ]
 
         for _ in range(n_iters):
             filters = self.data_structure.get_n_filters(n_filters)
-            filtered_data = self.data_connector.filter(
-                self.data_connector,
-                filters
-            )
+            filtered_data = self.data_connector.filter(self.data_connector, filters)
             is_passing_size_threshold = (
                 len(filtered_data) >= len(self.data_connector.data) * min_size
             )
@@ -59,23 +58,29 @@ class UniformSliceFinder(SliceFinder):
             filtered_data_metric_value = metric(filtered_data)
 
             if maximize and filtered_data_metric_value > hof[0].filtered_data_metric_value:
-                hof.insert(0, Extreme(
-                    data_metric_value=data_metric_value,
-                    filtered_data=filtered_data,
-                    filtered_data_metric_value=filtered_data_metric_value,
-                    filters=filters,
-                ))
+                hof.insert(
+                    0,
+                    Extreme(
+                        data_metric_value=data_metric_value,
+                        filtered_data=filtered_data,
+                        filtered_data_metric_value=filtered_data_metric_value,
+                        filters=filters,
+                    ),
+                )
                 if self.verbose:
                     print(hof[0].filtered_data_metric_value, hof[0].filters)
                 if filtered_data_metric_value >= maximum:
                     break
             elif not maximize and filtered_data_metric_value < hof[0].filtered_data_metric_value:
-                hof.insert(0, Extreme(
-                    data_metric_value=data_metric_value,
-                    filtered_data=filtered_data,
-                    filtered_data_metric_value=filtered_data_metric_value,
-                    filters=filters,
-                ))
+                hof.insert(
+                    0,
+                    Extreme(
+                        data_metric_value=data_metric_value,
+                        filtered_data=filtered_data,
+                        filtered_data_metric_value=filtered_data_metric_value,
+                        filters=filters,
+                    ),
+                )
                 if self.verbose:
                     print(hof[0].filtered_data_metric_value, hof[0].filters)
                 if filtered_data_metric_value <= minimum:

@@ -23,10 +23,7 @@ class GASliceFinder(SliceFinder):
         individual: list[Filter],
         **kwargs,
     ):
-        df = self.data_connector.filter(
-            self.data_connector.data,
-            individual
-        )
+        df = self.data_connector.filter(self.data_connector.data, individual)
         if len(df) < len(self.data_connector.data) * kwargs["min_size"]:
             return None
         return (kwargs["metric"](df),)

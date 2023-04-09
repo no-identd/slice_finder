@@ -4,8 +4,8 @@ from deap import base, creator, tools
 from deap.algorithms import varOr
 import numpy as np
 
-from slice_finder.types import Extreme
 from slice_finder.slice_finders.ga import GASliceFinder
+from slice_finder.types import Extreme
 
 
 class GAMuPlusLambdaSliceFinder(GASliceFinder):
@@ -134,7 +134,7 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
         minimum=float("-inf"),
     ) -> list[Extreme]:
         """Find slice with an extreme value of a metric.
-        
+
         Args:
             metric: Function that calculates metric value over data
             n_hof: Number of extreme values to return
@@ -154,8 +154,9 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
             minimum: If `not maximize`, and `minimum` is reached, the search stoppes
         """
 
-        if (isinstance(n_filters, int) and n_filters <= 1) or \
-            (isinstance(n_filters, tuple) and n_filters[0] <= 1):
+        if (isinstance(n_filters, int) and n_filters <= 1) or (
+            isinstance(n_filters, tuple) and n_filters[0] <= 1
+        ):
             raise ValueError("n_filters must be larger than 1.")
 
         toolbox = self.create_toolbox(
@@ -187,12 +188,12 @@ class GAMuPlusLambdaSliceFinder(GASliceFinder):
             minimum=minimum,
         )
 
-        return [Extreme(
-            data_metric_value=metric(self.data_connector.data),
-            filtered_data=self.data_connector.filter(
-                self.data_connector.data,
-                best_filters
-            ),
-            filtered_data_metric_value=best_filters.fitness.values[0],
-            filters=best_filters,
-        ) for best_filters in hof]
+        return [
+            Extreme(
+                data_metric_value=metric(self.data_connector.data),
+                filtered_data=self.data_connector.filter(self.data_connector.data, best_filters),
+                filtered_data_metric_value=best_filters.fitness.values[0],
+                filters=best_filters,
+            )
+            for best_filters in hof
+        ]
