@@ -28,13 +28,13 @@ pip install slice_finder
 ```python
 import pandas as pd
 from sklearn import metrics
-from slice_finder import GASliceFinder, FlattenedLGBMDataStructure, PandasDataConnector
+from slice_finder import GAMuPlusLambdaSliceFinder, FlattenedLGBMDataStructure, PandasDataConnector
 
 # Load data
 df = pd.read_csv('your_data.csv')
 
 # Initialize Genetic Algorithm Slice Finder with desired data connector and data structure
-slice_finder = GASliceFinder(
+slice_finder = GAMuPlusLambdaSliceFinder(
     data_connector=PandasDataConnector(
         df=df,
         X_cols=df.drop(['pred', 'target'], axis=1).columns,
